@@ -12,6 +12,15 @@ class Cell:
     self._y2 = None
     self._win = win
 
+  def draw_move(self, to_cell, undo=False):
+    fill = "red"
+    if undo:
+      fill = "gray"
+    my_mid = Point((self._x1 + self._x2) / 2, (self._y1 + self._y2) / 2)
+    to_mid = Point((to_cell._x1 + to_cell._x2) / 2, (to_cell._y1 + to_cell._y2) / 2)
+    line = Line(my_mid, to_mid)
+    self._win.draw_line(line, fill)
+
   def draw(self, x1, y1, x2, y2):
     self._x1 = x1
     self._x2 = x2
